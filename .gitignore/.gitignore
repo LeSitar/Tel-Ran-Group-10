@@ -185,3 +185,6 @@ fabric.properties
 *.iml
 *.class
 *.jar
+*.xml
+
+.DS_Store
