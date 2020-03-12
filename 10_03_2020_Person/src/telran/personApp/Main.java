@@ -15,8 +15,9 @@ public class Main {
         Person p3 = new Person ("Sergey", address1 );
         Person p4 = new Person ("Alina", new Address("Paris", "Saint Denis", 7));
         Person p5 = new Person ("Luba", new Address("London", "Baker", 21));
+        Person p6 = new Person("Misha", new Address("Berlin","Krummestrasse", 12));
 
-        Person[] persons = new Person[] {p1, p2, p3, p4, p5};
+        Person[] persons = {p1, p2, p3, p4, p5, p6};
 
         System.out.println(p1.toString());
         p1.getAddress().setCity("Sigulda");
@@ -24,6 +25,12 @@ public class Main {
         System.out.println(p1.getAddress().getCity());
         System.out.println(p1.getName() + " livs on the " + p1.getAddress().getStreet());
         findByName(persons,"Kolya");
+        System.out.println();
+
+        Person[] cityMembers = Person.listCityMembers(persons, "New York", 5);
+
+        Person.displayPersons(cityMembers);
+
 
 
 

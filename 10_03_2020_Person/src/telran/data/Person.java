@@ -35,14 +35,46 @@ public class Person {
         }
     }
 
-    public static void findByName(Person[] persons, String name){
-        int flag = 0;
-        for (int i = 0; i < persons.length ; i++) {
-            if(persons[i].getName().equalsIgnoreCase(name)){
-                System.out.println(name + " livs in " + persons[i].getAddress().getCity());
-                flag = 1; }
+    public static void displayPersons(Person[] persons){
+        for (int i = 0; i <persons.length ; i++) {
+            if(persons[i]!=null)
+                System.out.println(persons[i]);
         }
-        if(flag==0){
+    }
+
+    public static void findByName(Person[] persons, String name){
+        boolean flag = false;
+        for (Person p:persons) {
+            if(p.getName().equalsIgnoreCase(name)){
+                System.out.println(name + " livs in " + p.getAddress().getCity());
+                flag = true; }
+        }
+        if(!flag){
             System.out.println("This Person is not found");}
     }
+
+    public static void listCityMembers(Person[] persons, String city){
+        boolean flag=false;
+        for (Person p:persons) {
+            if(p.getAddress().getCity().equalsIgnoreCase(city)){
+                System.out.println(p);
+                flag=true;
+            }
+        }if(!flag){
+            System.out.println("city not found");
+        }
+    }
+
+    public static Person[] listCityMembers(Person[] persons, String city, int size){
+        int i = 0;
+        Person[] cityMembers = new Person[size];
+        for (Person p:persons) {
+            if(p.getAddress().getCity().equalsIgnoreCase(city)){
+                cityMembers[i]=p;
+                i++;
+            }
+        }
+        return cityMembers;
+    }
+
 }
