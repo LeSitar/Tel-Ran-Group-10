@@ -30,6 +30,10 @@ public class User {
         return null;
     }
 
+    public boolean checkSecretCode(int secretNumber) {
+        return secretNumber == this.secretCode;
+    }
+
     @Override
     public String toString() {
         return "\nUser: " + name +

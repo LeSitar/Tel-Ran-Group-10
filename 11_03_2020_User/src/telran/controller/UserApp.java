@@ -5,7 +5,8 @@ import telran.data.User;
 import java.util.Scanner;
 
 public class UserApp {
-    static Scanner scanner = new Scanner(System.in);
+
+    private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         User user1 = new User("Gena", 3457);
@@ -18,31 +19,36 @@ public class UserApp {
         String nameUser = getNameFromUser();
         userCollaboration(users, nameUser);
 
+        //userCollaboration(users, "Gena");
+
         scanner.close();
-
     }
 
-    public static String getNameFromUser(){
+    private static String getNameFromUser(){
         System.out.println("Please enter your name");
-        String userName = scanner.nextLine();
-        return userName;
+        return scanner.nextLine();
     }
 
-    public static int operationChoice(){
+    private static int operationChoice(){
         System.out.println("If you want get your secret code, enter 1");
         System.out.println(("If you want change your name, enter2"));
-        int operation = scanner.nextInt();
-        return operation;
+        return scanner.nextInt();
     }
 
-    public static void updateUser(User user){
-        System.out.println("Please enter your new name");
-        String newName = scanner.next();
-        user.setName(newName);
-        System.out.println("Your name is " + user.getName() + " now");
+    private static void updateUser(User user) {
+        System.out.println("Enter your code, please");
+        int secretCode = scanner.nextInt();
+        if (user.checkSecretCode(secretCode)) {
+            System.out.println("Please enter your new name");
+            String newName = scanner.next();
+            user.setName(newName);
+            System.out.println("Your name is " + user.getName() + " now");
+        } else {
+            System.out.println("sorry, secret code is wrong");
+        }
     }
 
-    public static void makeUserOperationChoice(int operation, User user ){
+    private static void makeUserOperationChoice(int operation, User user){
         switch (operation){
             case 1:
                 System.out.println(user.getSecretCode());
@@ -54,7 +60,20 @@ public class UserApp {
                 System.out.println("wrong operation number");
         }
     }
-    public static void userCollaboration(User[] users, String name){
+
+    private static void userCollaboration(User[] users, String name){
+        User user = User.getUserByName(users, name);
+        if(user!=null){
+            System.out.println("Hello dear " + name + "!");
+            int operation = operationChoice();
+            makeUserOperationChoice(operation, user);
+        }else{
+            System.out.println("sorry, we don't know you");
+        }
+    }
+
+
+ /*   private static void userCollaboration(User[] users, String name){
         if(User.getUserByName(users, name)==null){
             System.out.println("sorry, we don't know you");
         }else{
@@ -62,6 +81,6 @@ public class UserApp {
             int operation = operationChoice();
             makeUserOperationChoice(operation, User.getUserByName(users, name));
         }
-    }
+    }*/
 
 }
