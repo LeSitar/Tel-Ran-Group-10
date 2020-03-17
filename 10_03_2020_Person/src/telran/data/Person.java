@@ -36,10 +36,16 @@ public class Person {
     }
 
     public static void displayPersons(Person[] persons){
+        boolean flag = false;
         for (int i = 0; i <persons.length ; i++) {
-            if(persons[i]!=null)
+            if (persons[i] != null){
                 System.out.println(persons[i]);
+                flag = true;
+            }
         }
+        if(!flag){
+            System.out.println("Not found anyone in this town");}
+
     }
 
     public static void findByName(Person[] persons, String name){
@@ -68,12 +74,18 @@ public class Person {
     public static Person[] listCityMembers(Person[] persons, String city, int size){
         int i = 0;
         Person[] cityMembers = new Person[size];
+        // flag = false;
         for (Person p:persons) {
             if(p.getAddress().getCity().equalsIgnoreCase(city)){
                 cityMembers[i]=p;
                 i++;
+                //flag = true;
             }
         }
+        if(cityMembers[0]==null){
+            System.out.println("Not found anyone in this town");
+        }
+
         return cityMembers;
     }
 
