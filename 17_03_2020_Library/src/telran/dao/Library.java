@@ -55,4 +55,14 @@ public class Library {
             System.out.println("sorry, not found");
         }
     }
+
+    public int getOldestYearOfBook(){
+        int oldestYearOfIssue = books[0].getDateOfIssue();
+        for (int i = 0; i <size ; i++) {
+            if(oldestYearOfIssue>books[i].getDateOfIssue())
+                oldestYearOfIssue = books[i].getDateOfIssue();
+        }
+        return oldestYearOfIssue;
+    }
+
 }
