@@ -27,15 +27,20 @@ public class CinemaApp {
         Film film1 = new Film("Harry Potter", "25.03", Genre.ADVENTURE, cinemas1);
         Film film2 = new Film("Hail Ceaser", "26.03", Genre.COMEDY, cinemas);
         Film film3 = new Film ("Titanic", "27.03", Genre.DRAMA, cinemas1);
+        Film film4 = new Film("Figaro", "27.03", Genre.DRAMA, cinemas);
 
         Schedule schedule = new Schedule(20);
         schedule.addFilm(film1);
         schedule.addFilm(film2);
         schedule.addFilm(film3);
+        schedule.addFilm(film4);
 
-        schedule.displayFilms();
+        schedule.displayFilmsByDate("25.03");
+        schedule.displayFilmByCinema("Astra");
 
-        System.out.println(isCinemaInArray(cinemas,"Astra"));
+        schedule.displayCinemaByTitle("Hail Ceaser");
+
+
 
     }
 
