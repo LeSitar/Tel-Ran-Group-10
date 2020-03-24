@@ -41,7 +41,7 @@ public class Post {
     @Override
     public String toString() {
         return "Post ID" + postID +
-                ", posted by " + author +
+                ", posted by " + author + ", "+
                    title.toUpperCase() + ": "
                 + content +  "\n" +
                 "likes: " + likes +
